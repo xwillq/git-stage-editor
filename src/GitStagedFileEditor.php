@@ -48,6 +48,9 @@ class GitStagedFileEditor
 
         $updated_files = [];
         foreach (explode("\n", $diff_output) as $output_line) {
+            if ($output_line === '') {
+                continue;
+            }
             $entry = $this->parseDiff(trim($output_line));
 
             // Skip symlinks
