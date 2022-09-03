@@ -48,7 +48,7 @@ class GitStagedFileEditor
 
         $updated_files = [];
         foreach (explode('\n', $diff_output) as $output_line) {
-            $entry = $this->parseDiff($output_line);
+            $entry = $this->parseDiff(trim($output_line));
 
             // Skip symlinks
             if ($entry->dst_mode === '120000') {
@@ -216,10 +216,7 @@ class GitStagedFileEditor
      */
     private function normalizePath(string $path): string
     {
-        $realpath = realpath(
-            rtrim($this->path, DIRECTORY_SEPARATOR).
-            ltrim($path, DIRECTORY_SEPARATOR),
-        );
+        $realpath = realpath("$this->path/$path");
         if ($realpath === false) {
             throw new RuntimeException("Couln't get full path of $path");
         }
