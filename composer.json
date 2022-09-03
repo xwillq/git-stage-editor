@@ -1,0 +1,30 @@
+{
+  "name": "xwillq/git-stage-editor",
+  "description": "PHP package for editing staged files in git",
+  "keywords": [
+    "git"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/xwillq/git-stage-editor",
+  "authors": [
+    {
+      "name": "Pavel Shevchenko",
+      "email": "pasha.shevchenko.90@gmail.com"
+    }
+  ],
+  "require": {
+    "php": "^8.0",
+    "symfony/process": "^6.1"
+  },
+  "require-dev": {
+    "laravel/pint": "^1.1",
+    "phpstan/phpstan": "^1.8",
+    "phpstan/phpstan-strict-rules": "^1.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "Xwillq\\GitStageEditor\\": "src/"
+    }
+  },
+  "minimum-stability": "stable"
+}
