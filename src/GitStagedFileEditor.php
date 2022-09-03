@@ -47,7 +47,7 @@ class GitStagedFileEditor
         $diff_output = $this->runCommand(['git', 'diff-index', '--cached', '--diff-filter=AM', '--no-renames', 'HEAD']);
 
         $updated_files = [];
-        foreach (explode('\n', $diff_output) as $output_line) {
+        foreach (explode("\n", $diff_output) as $output_line) {
             $entry = $this->parseDiff(trim($output_line));
 
             // Skip symlinks
