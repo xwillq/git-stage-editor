@@ -194,7 +194,7 @@ class GitStagedFileEditor
         );
 
         if ($matched === false) {
-            throw new RuntimeException('Regex exception occured');
+            throw new RuntimeException('Regex exception occurred');
         } elseif ($matched === 0) {
             throw new RuntimeException('Git returned unexpected string format');
         }
@@ -218,7 +218,7 @@ class GitStagedFileEditor
     {
         $realpath = realpath("$this->path/$path");
         if ($realpath === false) {
-            throw new RuntimeException("Couln't get full path of $path");
+            throw new RuntimeException("Couldn't get full path of $path");
         }
 
         return $realpath;
@@ -237,7 +237,7 @@ class GitStagedFileEditor
             if (str_starts_with($pattern, '/')) {
                 $matched = preg_match($pattern, $path);
                 if ($matched === false) {
-                    throw new RuntimeException('Regex exception occured');
+                    throw new RuntimeException('Regex exception occurred');
                 }
 
                 if ($matched === 1) {
