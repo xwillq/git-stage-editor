@@ -179,7 +179,15 @@ class GitStagedFileEditor
             $this->runCommand(['git', 'diff', '--color=never', $orig_hash, $new_hash]),
         );
 
-        $this->runCommand(['git', 'apply', '-'], $patch);
+        try {
+            $this->runCommand(['git', 'apply', '-'], $patch);
+        } catch (ProcessFailedException $e) {
+            // Patch may fail if working tree already has this changes.
+            // If so, we will ignore the error, otherwise throw it again.
+            if (!str_contains($e->getMessage(), 'patch does not apply')) {
+                throw $e;
+            }
+        }
     }
 
     /**
